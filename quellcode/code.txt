@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <wiringPi.h>
+#include <iostream>
+using namespace std;
+
+void DEFINE()
+{
+     wiringPiSetup();
+     //motor1
+     pinMode(12,OUTPUT);//GES
+     pinMode(13,OUTPUT);//IN3
+     pinMode(14,OUTPUT);//IN4
+     //motor2
+     pinMode(27,OUTPUT);//GES
+     pinMode(28,OUTPUT);//IN3
+     pinMode(29,OUTPUT);//IN4
+     //motor3
+     pinMode(8,OUTPUT);//GES
+     pinMode(9,OUTPUT);//IN1
+     pinMode(7,OUTPUT);//IN2
+}
+
+void FORWARD()
+{
+     //motor2
+     digitalWrite(27,HIGH);//GES
+     digitalWrite(28,HIGH);//IN3
+     digitalWrite(29,LOW);//IN4
+     //motor3
+     digitalWrite(8,HIGH);//GES
+     digitalWrite(9,HIGH);//IN1
+     digitalWrite(7,LOW);//IN2
+     delay(3000);
+}
+
+void BACKWARD()
+{
+     //motor2
+     digitalWrite(27,HIGH);//GES
+     digitalWrite(28,LOW);//IN3
+ digitalWrite(29,HIGH);//IN4
+     //motor3
+     digitalWrite(8,HIGH);//GES
+     digitalWrite(9,LOW);//IN1
+     digitalWrite(7,HIGH);//IN2
+     delay(3000);
+}
+
+void STOP()
+{
+     //motor1
+     digitalWrite(12,LOW);
+     //motor2
+     digitalWrite(27,LOW);
+     //motor3
+     digitalWrite(8,LOW);
+}
+int main()
+{
+   DEFINE();
+   FORWARD();
+   BACKWARD();
+   STOP();
+   return 0;
+}
+
